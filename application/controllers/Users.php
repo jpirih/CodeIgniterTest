@@ -60,15 +60,23 @@ class Users extends CI_Controller
     {
         $this->load->model('Model_users');
         $this->load->helper('form');
-        $data = array(
-            'first_name' => $this->input->post('first_name'),
-            'last_name' => $this->input->post('last_name'),
-            'email' => $this->input->post('email')
-        );
-
-        $this->Model_users->insertUser($data);
+        $this->load->library('form_validation');
         
-        redirect(base_url('users'));
+        if($_POST)
+        {
+
+            $data = array(
+                'first_name' => $this->input->post('first_name'),
+                'last_name' => $this->input->post('last_name'),
+                'email' => $this->input->post('email')
+            );
+
+            $this->Model_users->insertUser($data);
+            return redirect(base_url('users'));
+
+    }
+
+        
     }
     
     // obrazec za urejanje podatkov

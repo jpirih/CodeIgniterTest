@@ -21,7 +21,9 @@
 <!-- obrazec za vnos uporabnika  -->
 <div class="row">
     <div class="col-sm-6">
-        <?php echo form_open('users/addUser');?>
+        <div id="ok_message"></div>
+
+        <?php echo form_open('users/addUser', array('id' =>'add_user_form', 'class' =>'form-horizontal'));?>
         <div class="form-group">
             <label for="first_name" class="control col-sm-4">Ime/Name</label>
             <div class="col-sm-8">
@@ -52,3 +54,21 @@
 
     </div>
 </div>
+
+<!-- javascript ajax call form validation  -->
+<script>
+    $('#add_user_form').submit(function () {
+        var dataString = $('#add_user_from').serialize();
+        $.ajax({
+            type: 'POST',
+            url: <?php  echo form_open('users/addUser');?>,
+            data: dataString,
+            success: function (data) {
+                alert("Bravo");
+
+            }
+        });
+        return false;
+
+    });
+</script>

@@ -23,7 +23,7 @@
 <div class="row">
     <div class="col-sm-6">
         {user}
-        <?php echo form_open('users/updateUser/{id}');?>
+        <?php echo form_open('users/updateUser/{id}', array('class' => 'form-horizontal'));?>
         <div class="form-group">
             <label for="first_name" class="control col-sm-4">Ime/Name</label>
             <div class="col-sm-8">
